@@ -1,9 +1,13 @@
 *Blog post in progress... soon(TM)*
 
+Tested on Windows 21H1, Visual Studio 2019 (v142) and an GTX860M.
+
 # GPUSleep
 `GPUSleep` moves the beacon image to GPU memory before the beacon sleeps, and move it back to main memory after sleeping.
 
 The idea is to hook `HeapAlloc` and `Sleep`. Encrypt (XOR) the heap allocated by the beacon and move all PE sections + heap segments to GPU memory using `nvcuda.dll` imports.  
+
+> Comes with a pre-compiled `libMinHook.x64.lib`, you night want to compile your own.
 
 ## HeapEncrypt
 Using the technique described by waldo-irc, heap segments allocated by the beacon are XOR encrypted before moving them to GPU memory.
