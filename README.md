@@ -1,6 +1,6 @@
 *Blog post in progress... soon(TM)*
 
-Tested on Windows 21H1, Visual Studio 2019 (v142) and an GTX860M.
+Tested on Windows 21H1, Visual Studio 2019 (v142) and an NVIDIA GTX860M.
 
 # GPUSleep
 `GPUSleep` moves the beacon image to GPU memory before the beacon sleeps, and move it back to main memory after sleeping.
