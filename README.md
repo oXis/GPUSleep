@@ -37,6 +37,9 @@ void HookedSleep(DWORD dwMilliseconds) {
     [...]
 ```
 
+# Credit
+Big thanks to @smelly__vx, it's actually his code that gave me the idea. 
+
 # References
 [LockdExeDemo](https://www.arashparsa.com/hook-heaps-and-live-free/) by @waldo-irc   
 [GpuMemoryAbuse.cpp](https://github.com/vxunderground/VXUG-Papers/blob/main/GpuMemoryAbuse.cpp) by @smelly__vx  
