@@ -25,6 +25,18 @@ Modify code to use.
 ## Cobalt Strike
 `GPUSleep` will load an unstaged `beacon.dll` file with `LoadLibraryA`. The code has not been tested with reflective loading or other in memory loading techniques but if `HMODULE dll` points to a valid PE image everything should work.
 
+## Bugs
+Pretty sure it's full of bugs...
+Like, you need to refresh cuda context every time `HookedSleep` is called and I don't know why...
+```cpp
+void HookedSleep(DWORD dwMilliseconds) {
+
+	std::cout << "Hooked Sleep!\n";
+	// so Context cannot be init before CS beacon is fired up, I dunno why... If init before, cuda returns error 201
+	Context = initCuda(&Api, &Context);
+    [...]
+```
+
 # References
 [LockdExeDemo](https://www.arashparsa.com/hook-heaps-and-live-free/) by @waldo-irc   
 [GpuMemoryAbuse.cpp](https://github.com/vxunderground/VXUG-Papers/blob/main/GpuMemoryAbuse.cpp) by @smelly__vx  
