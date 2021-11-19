@@ -18,6 +18,7 @@ extern NVIDIA_API_TABLE Api;
 extern CUDA_CONTEXT Context;
 extern HMODULE dll;
 
+void run1(std::map<LPVOID, DWORD> heapMap);
 typedef VOID(*typeFunc)();
 
 void xor_bidirectional_encode(const char* key, const size_t keyLength, char* buffer, const size_t length);

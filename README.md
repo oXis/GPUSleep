@@ -1,4 +1,4 @@
-*Blog post in progress... soon(TM)*
+[Blog post](https://oxis.github.io/GPUSleep/)
 
 Tested on Windows 21H1, Visual Studio 2019 (v142) and an NVIDIA GTX860M.
 
